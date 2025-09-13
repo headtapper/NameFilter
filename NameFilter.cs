@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Oxide.Plugins
 {
     [Info("NameFilter", "headtapper", "1.0.0")]
-    [Description("Allow connections from players with usernames containing only English alhpanumeric characters. ")]
+    [Description("Allow connections from players with usernames containing only English alphanumeric characters. ")]
 
     public class NameFilter : RustPlugin
     {
