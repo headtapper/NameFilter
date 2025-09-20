@@ -2,10 +2,11 @@ using System;
 using Oxide.Core.Plugins;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Oxide.Plugins
 {
-    [Info("NameFilter", "headtapper", "1.0.1")]
+    [Info("NameFilter", "headtapper", "1.0.2")]
     [Description("Allow connections from players with usernames containing only English alphanumeric characters and whitelisted symbols.")]
 
     public class NameFilter : RustPlugin
@@ -87,7 +88,9 @@ namespace Oxide.Plugins
 
         #region Functions
 
-        private bool CheckCharacter(char character) => char.IsLetterOrDigit(character) || config.AdditionalCharacterWhitelist.Contains(character);
+        private bool CheckCharacter(char character) => EnglishOrDigit(character) || config.AdditionalCharacterWhitelist.Contains(character);
+
+        private bool EnglishOrDigit(char character) => Regex.IsMatch(character.ToString(), @"^[a-zA-Z0-9]+$");
 
         #endregion
     }
